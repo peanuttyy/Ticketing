@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TicketTriage &middot; Choose your view</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand">Ticket<span>Triage</span></div>
+    <nav class="site">
+      <a href="student.html">Submit a ticket</a>
+      <a href="admin.html">Admin review</a>
+    </nav>
+  </div>
+</header>
+
+<main style="padding:0;">
+  <div class="hero-top">
+    <span class="kicker">AI-200 Capstone &middot; Azure free-tier reference build</span>
+    <h1 class="cute-heading">Hiya! <span class="hi">Where's your ticket headed?</span></h1>
+    <p class="cute-sub">Pick a lane below &mdash; we'll take it from there.</p>
+
+    <span class="sparkle" style="top:6px; left:14%; --r:-8deg;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2z" fill="#FFC349"/></svg>
+    </span>
+    <span class="sparkle" style="top:36px; right:16%; --r:10deg; animation-delay:1.2s;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2z" fill="#5FACD3"/></svg>
+    </span>
+    <span class="sparkle" style="top:90px; left:6%; --r:14deg; animation-delay:2.1s;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#525EA7" opacity=".55"/></svg>
+    </span>
+  </div>
+
+  <div class="hero-cute">
+    <div class="lane-row">
+      <a class="lane-card student" href="student.html">
+        <span class="tape">psst, start here</span>
+        <div class="stub-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M8 8h.01M8 16h.01M16 8h.01M16 16h.01" stroke="#8A5A00" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <span class="eyebrow">For students</span>
+        <h2>Submit a ticket</h2>
+        <p>Tell us what's broken, missing, or confusing &mdash; we'll sort it into the right queue automatically.</p>
+        <span class="go">Open the ticket form
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#23264A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <div class="stamp-col">
+        <div class="line"></div>
+        <div class="stamp">
+          <svg class="spin" viewBox="0 0 74 74" fill="none"><circle cx="37" cy="37" r="34" stroke="rgba(255,255,255,.25)" stroke-width="1.4" stroke-dasharray="3 5"/></svg>
+          TRIAGE
+        </div>
+      </div>
+
+      <a class="lane-card admin" href="admin.html">
+        <span class="tape">staff only, shh</span>
+        <div class="stub-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="#0F4C68" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <span class="eyebrow">For staff</span>
+        <h2>Admin review</h2>
+        <p>Filter incoming tickets, check how each one was categorised, and move it through the workflow.</p>
+        <span class="go">Open the review queue
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#23264A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">AI-200 Capstone &middot; TicketTriage &middot; Azure free-tier reference build</div>
+</footer>
+
+</body>
+</html>
