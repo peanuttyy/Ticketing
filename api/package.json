@@ -1,0 +1,9 @@
+{
+  "name": "ticket-triage-api",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@azure/cosmos": "^4.10.0",
+    "uuid": "^9.0.0"
+  }
+}
