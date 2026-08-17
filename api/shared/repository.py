@@ -9,8 +9,9 @@ This keeps the rest of the API independent from the storage technology.
 
 import os
 from threading import Lock
-
 from azure.cosmos import CosmosClient
+from azure.identity import DefaultAzureCredential
+from azure.keyvault.secrets import SecretClient
 
 _TICKETS = {}
 
@@ -209,3 +210,15 @@ def update_ticket(
             ticket[key] = value
 
         return ticket
+
+# This line is used to store the URL of the Azure Key Vault where secrets are stored.
+VAULT_URL = "https://kv-tickettriagegrouptwo.vault.azure.net/"
+
+def get_cosmos_client():
+    # Reads local settings first, falls back to Azure Key Vault
+    connection_string = os.environ.get("COSMOS_DB_CONNECTION")
+    if not connection_string:
+        credential = DefaultAzureCredential()
+        secret_client = SecretClient(vault_url=VAULT_URL, credential=credential)
+        connection_string = secret_client.get_secret("CosmosDbConnectionString").value
+    return CosmosClient.from_connection_string(connection_string)
