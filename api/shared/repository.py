@@ -11,6 +11,9 @@ import os
 from threading import Lock
 
 from azure.cosmos import CosmosClient
+from azure.identity import DefaultAzureCredential
+from azure.keyvault.secrets import SecretClient
+from azure.cosmos import CosmosClient
 
 
 _TICKETS = {}
@@ -210,3 +213,18 @@ def update_ticket(
             ticket[key] = value
 
         return ticket
+
+
+VAULT_URL = "https://kv-tickettriagegrouptwo.vault.azure.net/"
+
+def get_cosmos_client():
+    # 1. Read local setting if running offline
+    connection_string = os.environ.get("COSMOS_DB_CONNECTION")
+
+    # 2. Fall back to Azure Key Vault
+    if not connection_string:
+        credential = DefaultAzureCredential()
+        secret_client = SecretClient(vault_url=VAULT_URL, credential=credential)
+        connection_string = secret_client.get_secret("CosmosDbConnectionString").value
+
+    return CosmosClient.from_connection_string(connection_string)
