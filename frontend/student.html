@@ -21,37 +21,40 @@
 <main>
   <div class="wrap">
     <h1>Submit a support request</h1>
-    <p class="lede">Tell us what you need help with. The system suggests a category automatically, so you can leave the category blank unless you already know where it belongs.</p>
+
+    <p class="lede" style="max-width: 620px; margin-top: 8px; margin-bottom: 24px; padding: 0;">
+     We are here to support all your needs. Tell us what you need help with. Provide your details below and the system will auto-detect the right category.
+    </p>
 
     <div id="banner"></div>
 
-    <form class="ticket-panel" onsubmit="return false;">
+    <form id="ticket-form" class="ticket-panel" onsubmit="return false;">
       <div class="ticket-stripe"></div>
       <div class="ticket-panel-body">
         
         <div style="display: flex; flex-direction: column; gap: 16px;">
           <div>
             <label for="full-name">Full name</label>
-            <input id="full-name" type="text">
+            <input id="full-name" type="text" placeholder="Please enter your full name">
           </div>
 
           <div>
             <label for="email">Email address</label>
-            <input id="email" type="email">
+            <input id="email" type="email" placeholder="example@email.com">
           </div>
 
           <div>
             <label for="title">Short title</label>
-            <input id="title" type="text" placeholder="Cannot access campus Wi-Fi">
+            <input id="title" type="text" placeholder="Please enter a suitable short title">
           </div>
 
           <div>
-            <label for="description">Description - the more detail, the better the category suggestion</label>
-            <textarea id="description" rows="4">I cannot connect to the campus Wi-Fi</textarea>
+            <label for="description">Description</label>
+            <textarea id="description" rows="4" placeholder="Provide details about your issue to help the system accurately suggest a category"></textarea>
           </div>
 
           <div>
-            <label for="priority">Priority - optional</label>
+            <label for="priority">Priority</label>
             <select id="priority">
               <option value="medium">Medium</option>
               <option value="low">Low</option>
@@ -60,15 +63,15 @@
           </div>
 
           <div>
-            <label for="category">Category - optional, leave blank to auto-detect</label>
+            <label for="category">Category</label>
             <select id="category">
-              <option value="">Suggest one for me</option>
+              <option value="">Auto detect category</option>
             </select>
           </div>
 
           <div style="display:flex; gap:8px; margin-top:8px;">
-            <button id="submit">Submit ticket</button>
-            <button id="clear" class="ghost">Clear</button>
+            <button id="submit" type="submit">Submit ticket</button>
+            <button id="clear" type="reset" class="ghost">Clear</button>
           </div>
         </div>
 

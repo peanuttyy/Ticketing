@@ -312,3 +312,17 @@ if (ticketForm) {
    ============================================================ */
 
 loadCategories();
+
+/*
+ * For student.html use the following code to reset the form when the "Clear" button is clicked.
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('ticket-form');
+  const clearBtn = document.getElementById('clear');
+
+  clearBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    form.reset();
+  });
+});
