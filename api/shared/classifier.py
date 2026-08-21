@@ -1,3 +1,10 @@
+"""Transparent, no-cost ticket-category suggestion logic.
+
+The classifier scores category-specific phrases and keywords in a ticket's
+title and description.  It deliberately returns its evidence so an admin can
+review the automated suggestion instead of treating it as a black box.
+"""
+
 import re
 
 from .categories import CATEGORIES

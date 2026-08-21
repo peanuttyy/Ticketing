@@ -125,6 +125,33 @@ function categoryBadge(category) {
 }
 
 
+function classificationSummary(ticket) {
+    const method = ticket.classificationMethod || "Not available";
+
+    if (method === "user-selected") {
+        return '<span class="ai-summary manual">Manual selection</span>';
+    }
+
+    const confidence = Number(ticket.classificationConfidence);
+    const confidenceText = Number.isFinite(confidence)
+        ? `${Math.round(confidence * 100)}% confidence`
+        : "Confidence unavailable";
+
+    const evidence = Array.isArray(ticket.classificationEvidence)
+        ? ticket.classificationEvidence.filter(Boolean).join(", ")
+        : "";
+
+    const evidenceText = evidence
+        ? `Matched: ${escapeHtml(evidence)}`
+        : "No strong keyword match";
+
+    return `
+        <span class="ai-summary">Keyword AI · ${escapeHtml(confidenceText)}</span>
+        <span class="ai-evidence">${evidenceText}</span>
+    `;
+}
+
+
 function priorityBadge(priority) {
     const value =
         (priority || "medium").toLowerCase();
@@ -375,7 +402,7 @@ function renderRows(tickets) {
         rows.innerHTML = `
             <tr>
                 <td
-                    colspan="7"
+                    colspan="8"
                     class="muted"
                     style="padding:22px;"
                 >
@@ -428,6 +455,10 @@ function renderRows(tickets) {
             "medium";
 
 
+        const classification =
+            classificationSummary(ticket);
+
+
         const status =
             ticket.status ||
             "New";
@@ -465,6 +496,10 @@ function renderRows(tickets) {
 
             <td>
                 ${categoryBadge(category)}
+            </td>
+
+            <td>
+                ${classification}
             </td>
 
             <td>
@@ -517,7 +552,7 @@ async function loadTickets() {
     rows.innerHTML = `
         <tr>
             <td
-                colspan="7"
+                colspan="8"
                 class="muted"
                 style="padding:22px;"
             >

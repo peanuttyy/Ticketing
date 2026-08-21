@@ -442,3 +442,14 @@ td.ticket-id, .mono{font-family:var(--mono); font-size:12.5px; color:var(--ink-s
   background:var(--indigo-soft); color:var(--indigo-deep);
   padding:8px 16px; border-radius:999px; margin:14px 0 22px;
 }
+
+/* ---------------- automatic category suggestion ---------------- */
+.ai-summary{
+  display:block; font-size:12px; font-weight:700; color:var(--indigo-deep);
+  white-space:nowrap;
+}
+.ai-summary.manual{color:var(--ink-soft);}
+.ai-evidence{
+  display:block; max-width:190px; margin-top:4px; font-size:11.5px;
+  line-height:1.35; color:var(--ink-soft);
+}

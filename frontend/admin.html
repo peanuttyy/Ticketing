@@ -21,7 +21,7 @@
 <main>
   <div class="wrap">
     <h1>Ticket review</h1>
-    <p class="lede">Filter incoming tickets, check how each one was categorised, and move it through the workflow.</p>
+    <p class="lede">Review the automatic category suggestion and its confidence, then correct it if needed before moving the ticket through the workflow.</p>
 
     <div id="banner"></div>
     <div class="stats" id="stats"></div>
@@ -80,13 +80,14 @@
               <th>Requester</th>
               <th>Title</th>
               <th>Category</th>
+              <th>AI suggestion</th>
               <th>Priority</th>
               <th>Status</th>
               <th style="min-width:220px;">Actions</th>
             </tr>
           </thead>
           <tbody id="rows">
-            <tr><td colspan="7" class="muted" style="padding:22px;">Loading tickets...</td></tr>
+            <tr><td colspan="8" class="muted" style="padding:22px;">Loading tickets...</td></tr>
           </tbody>
         </table>
       </div>

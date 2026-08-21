@@ -47,6 +47,11 @@ CATEGORIES = {
             "broken toilet",
             "water leak",
             "power outage",
+            "dorm door",
+            "dormitory door",
+            "cannot open the door",
+            "can't open the door",
+            "locked out of my room",
         ],
 
         "strong": [
@@ -59,6 +64,12 @@ CATEGORIES = {
             "maintenance",
             "building",
             "room",
+            "dorm",
+            "dormitory",
+            "residence",
+            "hostel",
+            "lock",
+            "key",
             "leak",
         ],
 
