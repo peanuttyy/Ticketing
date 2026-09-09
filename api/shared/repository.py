@@ -9,6 +9,7 @@ This keeps the rest of the API independent from the storage technology.
 
 import os
 from threading import Lock
+from datetime import datetime, timezone
 from azure.cosmos import CosmosClient
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient
@@ -191,8 +192,33 @@ def update_ticket(
         if ticket is None:
             return None
 
+        now = datetime.now(
+            timezone.utc
+        ).isoformat()
+
         for key, value in changes.items():
             ticket[key] = value
+
+        ticket["updatedAt"] = now
+
+        if "status" in changes:
+            old_status = None
+
+            if ticket.get("statusHistory"):
+                old_status = ticket[
+                    "statusHistory"
+                ][-1].get("status")
+
+            new_status = changes["status"]
+
+            if old_status != new_status:
+                ticket.setdefault(
+                    "statusHistory",
+                    []
+                ).append({
+                    "status": new_status,
+                    "changedAt": now
+                })
 
         container.upsert_item(ticket)
 
@@ -206,19 +232,55 @@ def update_ticket(
         if ticket is None:
             return None
 
+        now = datetime.now(
+            timezone.utc
+        ).isoformat()
+
         for key, value in changes.items():
             ticket[key] = value
 
+        ticket["updatedAt"] = now
+
+        if "status" in changes:
+            old_status = None
+
+            if ticket.get("statusHistory"):
+                old_status = ticket[
+                    "statusHistory"
+                ][-1].get("status")
+
+            new_status = changes["status"]
+
+            if old_status != new_status:
+                ticket.setdefault(
+                    "statusHistory",
+                    []
+                ).append({
+                    "status": new_status,
+                    "changedAt": now
+                })
+
         return ticket
+
 
 # This line is used to store the URL of the Azure Key Vault where secrets are stored.
 VAULT_URL = "https://kv-tickettriagegrouptwo.vault.azure.net/"
 
+
 def get_cosmos_client():
     # Reads local settings first, falls back to Azure Key Vault
     connection_string = os.environ.get("COSMOS_DB_CONNECTION")
+
     if not connection_string:
         credential = DefaultAzureCredential()
-        secret_client = SecretClient(vault_url=VAULT_URL, credential=credential)
-        connection_string = secret_client.get_secret("CosmosDbConnectionString").value
-    return CosmosClient.from_connection_string(connection_string)
+        secret_client = SecretClient(
+            vault_url=VAULT_URL,
+            credential=credential
+        )
+        connection_string = secret_client.get_secret(
+            "CosmosDbConnectionString"
+        ).value
+
+    return CosmosClient.from_connection_string(
+        connection_string
+    )

@@ -1,0 +1,25 @@
+// This tells Azure functions:
+// GET   /api/ticket_item/{ticket_id}
+// PATCH /api/ticket_item/{ticket_id}
+// The {ticket_id} part becomes a route parameter that our Python function can read.
+{
+    "scriptFile": "__init__.py",
+    "bindings": [
+        {
+            "authLevel": "anonymous",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req",
+            "methods": [
+                "get",
+                "patch"
+            ],
+            "route": "ticket_item/{ticket_id}"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "$return"
+        }
+    ]
+}
