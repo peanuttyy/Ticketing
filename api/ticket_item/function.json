@@ -1,7 +1,3 @@
-// This tells Azure functions:
-// GET   /api/ticket_item/{ticket_id}
-// PATCH /api/ticket_item/{ticket_id}
-// The {ticket_id} part becomes a route parameter that our Python function can read.
 {
     "scriptFile": "__init__.py",
     "bindings": [
