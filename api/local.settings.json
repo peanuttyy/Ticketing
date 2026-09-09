@@ -3,6 +3,9 @@
     "Values": {
         "AzureWebJobsStorage": "",
         "FUNCTIONS_WORKER_RUNTIME": "python",
-        "COSMOS_DB_CONNECTION": "AccountEndpoint=https://ticketinggrouptwo.documents.azure.com:443/;AccountKey=hprSwBBeYGXLDeTCM1n04A7cm3tbF41htzZ5LO6uBZlo2L6V10Fesb7LsQt2lgL3sgcAyAlor7AQACDbBvSBUQ==;"
+        "COSMOS_ENDPOINT": "https://ticketinggrouptwo.documents.azure.com:443/",
+        "COSMOS_KEY": "hprSwBBeYGXLDeTCM1n04A7cm3tbF41htzZ5LO6uBZlo2L6V10Fesb7LsQt2lgL3sgcAyAlor7AQACDbBvSBUQ==",
+        "COSMOS_DATABASE": "tickettriage-db",
+        "COSMOS_CONTAINER": "tickets"
     }
 }
